@@ -33,3 +33,9 @@
   padding-bottom: 1rem;
   font-size: 1.5rem;
 }
+
+/* ----------------------------- SearchBar ----------------------------- */
+
+.SearchBar {
+  width: 100px;
+}
