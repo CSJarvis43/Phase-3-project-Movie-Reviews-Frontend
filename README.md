@@ -10,4 +10,4 @@ CRUD goals:
 C- Create a movie/review,
 R- Read a movie/review,
 U- Update a movie/review,
-D- Delete a movie/review,
+D- Delete a movie/review
