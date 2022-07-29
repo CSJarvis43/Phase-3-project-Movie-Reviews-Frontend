@@ -11,3 +11,7 @@ C- Create a movie/review,
 R- Read a movie/review,
 U- Update a movie/review,
 D- Delete a movie/review
+
+DB structure:
+
+![alt text](https://i.imgur.com/PRaERUd.png)
