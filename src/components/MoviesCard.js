@@ -5,16 +5,17 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-function MoviesCard() {
+function MoviesCard({movie}) {
   const [value, setValue] = React.useState(0);
+
 
   return (
     <Grid item xs={4}>
-      <Paper className="MoviesCard">
-        <img className="recipe-image" />
+      <Paper className="MoviesCard" elevation={20}>
+        <img className="movie-image" alt={movie.title} src={movie.img_url} />
         <Box paddingX={1}>
           <Typography variant="h4" component="h2">
-            Movie Title
+            {movie.title}
           </Typography>
           <Box
             sx={{
@@ -22,9 +23,8 @@ function MoviesCard() {
               alignItems: "center",
             }}
           >
-            Image URL
           </Box>
-          <Typography variant="subtitle1">Description</Typography>
+          <Typography variant="subtitle1">{movie.description}</Typography>
         </Box>{" "}
         :
         <Box paddingX={1}>
