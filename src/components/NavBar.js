@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import './NavBar.css'
 import { Link as RouterLink } from 'react-router-dom'
+import SearchBar from './SearchBar';
 
 const linkBehaviorHome = React.forwardRef((props, ref) => (
   <RouterLink ref={ref} to="/" {...props} role={undefined} />

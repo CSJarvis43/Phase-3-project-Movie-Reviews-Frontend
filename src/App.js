@@ -10,9 +10,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Container } from '@mui/material';
 import TopTen from './components/TopTen';
 import Favorites from './components/Favorites';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [movies, setMovies] = useState([])
+  const [searchState, setSearchState] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:9292')
@@ -22,9 +24,22 @@ function App() {
 
   console.log(movies)
 
+  function handleSearchChange(e) {
+    e.preventDefault()
+    setSearchState(e.target.value)
+  }
+
+  const displayedMovies = movies.filter((movie) => {
+    return movie.title.toLowerCase().includes(searchState.toLowerCase());
+  });
+
   return (
     <Router>
       <Navbar />
+      <SearchBar
+      searchState={searchState}
+      handleSearchChange={handleSearchChange} />
+
       <Routes>
         <Route 
           path="/"
@@ -32,7 +47,7 @@ function App() {
             <Container maxWidth={"false"}>
               <MoviesCardContainer 
                 className='MoviesContainer'
-                movies={movies}
+                movies={displayedMovies}
                />
             </Container>
           }
