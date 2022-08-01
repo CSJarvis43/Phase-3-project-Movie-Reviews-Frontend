@@ -1,18 +1,27 @@
 import React from "react";
 import MoviesCard from "./MoviesCard";
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 
+function MoviesCardContainer({movies}) {
 
-function MoviesCardContainer() {
+  const renderMovies = movies.map((movie) => {
+    return (
+      <MoviesCard
+        key={movie.id}
+        title={movie.title}
+        movie={movie}
+      />
+    );
+  });
 
-return <div className="movies-container">
-    <center>RENDER MOVIES</center>
-    <Grid container spacing={5}>
-          <MoviesCard/>
-        </Grid>
-    </div>;
-
-
+  return (
+    <div className="movies-container">
+      <center>RENDER MOVIES</center>
+      <Grid container spacing={6}>
+        {renderMovies}
+      </Grid>
+    </div>
+  );
 }
 
-export default MoviesCardContainer
+export default MoviesCardContainer;
