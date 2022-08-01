@@ -2,7 +2,9 @@ import React from "react";
 import MoviesCard from "./MoviesCard";
 import Grid from "@mui/material/Grid";
 
-function MoviesCardContainer({movies}) {
+function MoviesCardContainer({movies, reviews}) {
+
+  console.log(reviews)
 
   const renderMovies = movies.map((movie) => {
     return (
@@ -14,11 +16,23 @@ function MoviesCardContainer({movies}) {
     );
   });
 
+  // const renderReviews = reviews.map(review => {
+  //   return (
+  //     <MoviesCard 
+  //       key={review.id}
+  //       comment={review.comment}
+  //       movieId={review.movie_id}
+  //       rating={review.rating}
+  //     />
+
+  //   )
+  // })
+
   return (
     <div className="movies-container">
-      <center>RENDER MOVIES</center>
       <Grid container spacing={6}>
         {renderMovies}
+        {/* {renderReviews} */}
       </Grid>
     </div>
   );
