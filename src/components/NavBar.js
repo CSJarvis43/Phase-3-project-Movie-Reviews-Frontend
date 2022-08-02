@@ -23,7 +23,7 @@ const linkBehaviorTop = React.forwardRef((props, ref) => (
 
 
 
-const NavBar = () => {
+function NavBar({handleSearchChange, searchState}) {
 
 
   return (
@@ -36,23 +36,27 @@ const NavBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
-                sx={{ my: 1, mx: 1, color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
                 component={linkBehaviorHome}
               >
                 Home
               </Button>
               <Button
-                sx={{ my: 1, mx: 1, color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
                 component={linkBehaviorFav}
               >
                   Favorites
               </Button>
               <Button
-                sx={{ my: 1, mx: 1, color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
                 component={linkBehaviorTop}
               >
                   Top Movies
               </Button>
+              <SearchBar 
+                searchState={searchState}
+                handleSearchChange={handleSearchChange}
+              />
           </Box>
         </Toolbar>
       </Container>

@@ -58,10 +58,10 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <SearchBar
-      searchState={searchState}
-      handleSearchChange={handleSearchChange} />
+      <Navbar 
+        searchState={searchState}
+        handleSearchChange={handleSearchChange} 
+      />
 
       <Routes>
         <Route 
