@@ -7,16 +7,20 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Favorite from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card"
-import { CardMedia, Container } from "@mui/material";
+import { Button, CardMedia, Container } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import CardHeader from "@mui/material/CardHeader";
 import { FlipToBack, FlipToFront } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import Reviews from "./Reviews";
+import CardActions from "@mui/material/CardActions";
+
 
 function MoviesCard({ movie, handleAddFavorite }) {
   // const [value, setValue] = React.useState(0);
   const [showBack, setShowBack] = React.useState(false)
+  const [value, setValue] = React.useState(0);
+  const [fav, setFav] = React.useState(false);
 
   function handleFlip() {
     setShowBack(!showBack);
@@ -40,8 +44,6 @@ function MoviesCard({ movie, handleAddFavorite }) {
 
 
 
-  const [value, setValue] = React.useState(0);
-  const [fav, setFav] = React.useState(false);
 
 
   /* ----------------------------- Post for favorites to backend  ----------------------------- */
@@ -144,14 +146,15 @@ function MoviesCard({ movie, handleAddFavorite }) {
           </ReactReadMoreReadLess>
 
         </Box>{" "}
-        <Box paddingX={1}>
-          <Typography component="legend">Ratings</Typography>
+        <Box paddingX={1} display="flex">
+          {/* <Typography component="legend">Rating</Typography> */}
           <Rating
             name="simple-controlled"
             value={average}
             // onChange={(event, newValue) => {
             //   setValue(newValue);
             // }}
+            sx={{ mx: "auto" }}
             max={10}
             readOnly
             precision={0.1}
@@ -162,6 +165,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
               aria-label="delete"
               color="primary"
               className="likeButton"
+              sx={{ mx: "auto" }}
             >
               <FavoriteBorderIcon></FavoriteBorderIcon>
             </IconButton>
@@ -172,11 +176,15 @@ function MoviesCard({ movie, handleAddFavorite }) {
               aria-label="delete"
               color="primary"
               className="likeButton"
+              sx={{ mx: "auto" }}
             >
               <Favorite></Favorite>
             </IconButton>
           )}
         </Box>
+        <CardActions>
+          <Button variant="contained" sx={{ mx: "auto" }}>Leave A Review</Button>
+        </CardActions>
       </Card>
     </Grid>
   );
