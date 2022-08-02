@@ -19,10 +19,20 @@ function MoviesCard({movie}) {
     setShowBack(!showBack);
   }
 
+  const newUsers = movie.users.map(user => {
+    const container = {}
+
+    container[user.id] = user
+    return container
+  })
+
+  console.log(movie.users)
+
+
+  // const newReviews = movie.reviews.filter(review => review.user_id === movie.users.user.i)
 
   const average = movie.reviews.reduce((total, next) => total + next.rating, 0) / movie.reviews.length
 
-  console.log(average)
 
   return (
     <Grid item xs={4}>
