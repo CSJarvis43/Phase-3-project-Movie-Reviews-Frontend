@@ -13,21 +13,21 @@ import Favorites from './components/Favorites';
 
 function App() {
   const [movies, setMovies] = useState([])
-  const [revByMovie, setRevByMovie] = useState([])
+  // const [revByMovie, setRevByMovie] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:9292')
+    fetch('http://localhost:9292/reviews')
     .then((response) => response.json())
     .then((data) => setMovies(data))
   }, [])
 
   // console.log(movies)
 
-  useEffect(() => {
-    fetch('http://localhost:9292/reviews')
-    .then(res => res.json())
-    .then(setRevByMovie)
-  },[])
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/reviews')
+  //   .then(res => res.json())
+  //   .then(setRevByMovie)
+  // },[])
 
   return (
     <Router>
@@ -40,8 +40,8 @@ function App() {
               <MoviesCardContainer 
                 className='MoviesContainer'
                 movies={movies}
-                reviews={revByMovie}
-               />
+                // reviews={revByMovie}
+              />
             </Container>
           }
         />

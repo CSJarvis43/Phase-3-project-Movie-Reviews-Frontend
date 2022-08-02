@@ -2,9 +2,9 @@ import React from "react";
 import MoviesCard from "./MoviesCard";
 import Grid from "@mui/material/Grid";
 
-function MoviesCardContainer({movies, reviews}) {
+function MoviesCardContainer({movies}) {
 
-  console.log(reviews)
+  console.log(movies)
 
   const renderMovies = movies.map((movie) => {
     return (
