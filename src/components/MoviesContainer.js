@@ -4,6 +4,8 @@ import Grid from "@mui/material/Grid";
 
 function MoviesCardContainer({movies, handleAddFavorite}) {
 
+  console.log(movies)
+
   const renderMovies = movies.map((movie) => {
     return (
       <MoviesCard
@@ -15,11 +17,23 @@ function MoviesCardContainer({movies, handleAddFavorite}) {
     );
   });
 
+  // const renderReviews = reviews.map(review => {
+  //   return (
+  //     <MoviesCard 
+  //       key={review.id}
+  //       comment={review.comment}
+  //       movieId={review.movie_id}
+  //       rating={review.rating}
+  //     />
+
+  //   )
+  // })
+
   return (
     <div className="movies-container">
-      <center>RENDER MOVIES</center>
       <Grid container spacing={6}>
         {renderMovies}
+        {/* {renderReviews} */}
       </Grid>
     </div>
   );

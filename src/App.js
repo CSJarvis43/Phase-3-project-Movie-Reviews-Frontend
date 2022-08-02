@@ -19,7 +19,7 @@ function App() {
 
 /* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
-    fetch('http://localhost:9292')
+    fetch('http://localhost:9292/reviews')
     .then((response) => response.json())
     .then((data) => setMovies(data))
   }, [])
@@ -40,11 +40,21 @@ function App() {
     setSearchState(e.target.value)
   }
 
+
+  // console.log(movies)
+
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/reviews')
+  //   .then(res => res.json())
+  //   .then(setRevByMovie)
+  // },[])
+
   const displayedMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().includes(searchState.toLowerCase());
   });
 
   /* ----------------------------- Return App.js ----------------------------- */
+
 
   return (
     <Router>
@@ -60,9 +70,11 @@ function App() {
             <Container maxWidth={"false"}>
               <MoviesCardContainer 
                 className='MoviesContainer'
+
                 movies={displayedMovies}
                 handleAddFavorite={handleAddFavorite}
                />
+
             </Container>
           }
         />
