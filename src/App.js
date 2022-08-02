@@ -15,14 +15,25 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [movies, setMovies] = useState([])
   const [searchState, setSearchState] = useState('')
+  const [favorites, setFavorites] = useState([])
 
+/* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
     fetch('http://localhost:9292')
     .then((response) => response.json())
     .then((data) => setMovies(data))
   }, [])
-
-  console.log(movies)
+/* ----------------------------- Setting favorites page ----------------------------- */
+  useEffect(() => {
+    fetch('http://localhost:9292/favorites')
+    .then(res => res.json())
+    .then((data) => setFavorites(data))
+  }, [])
+  
+  function handleAddFavorite(newItem) {
+    setFavorites([...favorites, newItem]);
+  }
+  /* ----------------------------- Working SearchBar ----------------------------- */
 
   function handleSearchChange(e) {
     e.preventDefault()
@@ -32,6 +43,8 @@ function App() {
   const displayedMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().includes(searchState.toLowerCase());
   });
+
+  /* ----------------------------- Return App.js ----------------------------- */
 
   return (
     <Router>
@@ -48,6 +61,7 @@ function App() {
               <MoviesCardContainer 
                 className='MoviesContainer'
                 movies={displayedMovies}
+                handleAddFavorite={handleAddFavorite}
                />
             </Container>
           }
