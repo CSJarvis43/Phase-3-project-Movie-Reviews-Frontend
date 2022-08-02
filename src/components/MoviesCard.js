@@ -14,6 +14,7 @@ import { FlipToBack, FlipToFront } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import Reviews from "./Reviews";
 import CardActions from "@mui/material/CardActions";
+import ReviewForm from "./ReviewForm";
 
 
 function MoviesCard({ movie, handleAddFavorite }) {
@@ -182,9 +183,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
             </IconButton>
           )}
         </Box>
-        <CardActions>
-          <Button variant="contained" sx={{ mx: "auto" }}>Leave A Review</Button>
-        </CardActions>
+        <ReviewForm />
       </Card>
     </Grid>
   );
