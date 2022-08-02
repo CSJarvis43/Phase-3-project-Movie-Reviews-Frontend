@@ -34,7 +34,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
   //   return container
   // })
 
-  console.log(movie.users)
+  // console.log(movie.users)
 
 
   // const newReviews = movie.reviews.filter(review => review.user_id === movie.users.user.i)
@@ -158,7 +158,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
             sx={{ mx: "auto" }}
             max={10}
             readOnly
-            precision={0.1}
+            precision={0.25}
           />
           {!fav && (
             <IconButton
@@ -183,7 +183,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
             </IconButton>
           )}
         </Box>
-        <ReviewForm />
+        <ReviewForm movie={movie}/>
       </Card>
     </Grid>
   );

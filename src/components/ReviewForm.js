@@ -3,7 +3,7 @@ import { CardActions, Container, MenuItem, Select, FormControl, InputLabel, Box 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 
-function ReviewForm() {
+function ReviewForm({movie}) {
 
     const [showForm, setShowForm] = useState(false)
     const [rating, setRating] = useState('')
@@ -13,10 +13,6 @@ function ReviewForm() {
         setShowForm(!showForm)
     }
 
-    function handleSubmit(e) {
-        console.log(e.target)
-    }
-
     function handleRating(e) {
         setRating(e.target.value)
     }
@@ -24,8 +20,31 @@ function ReviewForm() {
     function handleComment(e) {
         setComment(e.target.value)
     }
+
+    const newReviewObj = {
+        rating: rating,
+        comment: comment,
+        movie_id: movie.id
+    }
+
     
-    console.log(comment)
+    
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        fetch("http://localhost:9292/reviews/new", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(newReviewObj)
+        })
+        .then(r => r.json())
+    }
+
+
+
+
 
   return (
     <CardActions>
