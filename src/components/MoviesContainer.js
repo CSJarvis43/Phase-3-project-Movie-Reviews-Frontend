@@ -2,7 +2,7 @@ import React from "react";
 import MoviesCard from "./MoviesCard";
 import Grid from "@mui/material/Grid";
 
-function MoviesCardContainer({movies}) {
+function MoviesCardContainer({movies, handleAddFavorite}) {
 
   console.log(movies)
 
@@ -12,6 +12,7 @@ function MoviesCardContainer({movies}) {
         key={movie.id}
         title={movie.title}
         movie={movie}
+        handleAddFavorite={handleAddFavorite}
       />
     );
   });

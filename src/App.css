@@ -37,7 +37,8 @@
 /* ----------------------------- SearchBar ----------------------------- */
 
 .SearchBar {
-  width: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ----------------------------- MovieCards ----------------------------- */
@@ -47,8 +48,14 @@
   height: 30vh
 }
 
-.moviesCard {
+/* .moviesCard {
   overflow: hidden;
   Border-radius: 10px;
   Border: 5px groove rgba(0, 0, 0, 0.714);
-  } 
+  }  */
+
+  .likeButton {
+    align-items: right;
+    justify-content: right;
+    align-self: right;
+  }

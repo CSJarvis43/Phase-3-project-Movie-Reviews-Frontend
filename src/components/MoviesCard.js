@@ -3,6 +3,9 @@ import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import Favorite from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card"
 import { CardMedia, Container } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
@@ -33,6 +36,58 @@ function MoviesCard({movie}) {
 
   const average = movie.reviews.reduce((total, next) => total + next.rating, 0) / movie.reviews.length
 
+
+
+
+function MoviesCard({ movie, handleAddFavorite }) {
+  const [value, setValue] = React.useState(0);
+  const [fav, setFav] = React.useState(false);
+
+
+  /* ----------------------------- Post for favorites to backend  ----------------------------- */
+  const {
+    id,
+    title,
+    description,
+    img_url,
+    director,
+    box_office_earnings,
+    production_company,
+    release_year,
+    runtime,
+  } = movie;
+
+  function handleFav() {
+    setFav(!fav);
+    if (fav == false) {
+      const movie = {
+        id,
+        title,
+        description,
+        img_url,
+        director,
+        box_office_earnings,
+        production_company,
+        release_year,
+        runtime,
+      };
+      console.log(movie)
+      fetch("http://localhost:9292/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(movie),
+      })
+        .then((res) => res.json())
+        .then((newItem) => handleAddFavorite(newItem));
+    } else {
+      //Or delete from /favorites (or do nothing)
+    }
+  }
+    
+  
 
   return (
     <Grid item xs={4}>
@@ -75,6 +130,7 @@ function MoviesCard({movie}) {
               display: "flex",
               alignItems: "center",
             }}
+
           >
           </Box>
           <ReactReadMoreReadLess
@@ -86,6 +142,7 @@ function MoviesCard({movie}) {
           >
             {movie.description}
           </ReactReadMoreReadLess>
+
         </Box>{" "}
         <Box paddingX={1}>
           <Typography component="legend">Ratings</Typography>
@@ -99,6 +156,26 @@ function MoviesCard({movie}) {
             readOnly
             precision={0.1}
           />
+          {!fav && (
+            <IconButton
+              onClick={handleFav}
+              aria-label="delete"
+              color="primary"
+              className="likeButton"
+            >
+              <FavoriteBorderIcon></FavoriteBorderIcon>
+            </IconButton>
+          )}
+          {fav && (
+            <IconButton
+              onClick={handleFav}
+              aria-label="delete"
+              color="primary"
+              className="likeButton"
+            >
+              <Favorite></Favorite>
+            </IconButton>
+          )}
         </Box>
       </Card>
     </Grid>

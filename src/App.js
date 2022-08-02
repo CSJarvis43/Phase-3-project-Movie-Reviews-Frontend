@@ -10,16 +10,36 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Container } from '@mui/material';
 import TopTen from './components/TopTen';
 import Favorites from './components/Favorites';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [movies, setMovies] = useState([])
-  // const [revByMovie, setRevByMovie] = useState([])
+  const [searchState, setSearchState] = useState('')
+  const [favorites, setFavorites] = useState([])
 
+/* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
     fetch('http://localhost:9292/reviews')
     .then((response) => response.json())
     .then((data) => setMovies(data))
   }, [])
+/* ----------------------------- Setting favorites page ----------------------------- */
+  useEffect(() => {
+    fetch('http://localhost:9292/favorites')
+    .then(res => res.json())
+    .then((data) => setFavorites(data))
+  }, [])
+  
+  function handleAddFavorite(newItem) {
+    setFavorites([...favorites, newItem]);
+  }
+  /* ----------------------------- Working SearchBar ----------------------------- */
+
+  function handleSearchChange(e) {
+    e.preventDefault()
+    setSearchState(e.target.value)
+  }
+
 
   // console.log(movies)
 
@@ -29,9 +49,20 @@ function App() {
   //   .then(setRevByMovie)
   // },[])
 
+  const displayedMovies = movies.filter((movie) => {
+    return movie.title.toLowerCase().includes(searchState.toLowerCase());
+  });
+
+  /* ----------------------------- Return App.js ----------------------------- */
+
+
   return (
     <Router>
       <Navbar />
+      <SearchBar
+      searchState={searchState}
+      handleSearchChange={handleSearchChange} />
+
       <Routes>
         <Route 
           path="/"
@@ -39,9 +70,11 @@ function App() {
             <Container maxWidth={"false"}>
               <MoviesCardContainer 
                 className='MoviesContainer'
-                movies={movies}
-                // reviews={revByMovie}
-              />
+
+                movies={displayedMovies}
+                handleAddFavorite={handleAddFavorite}
+               />
+
             </Container>
           }
         />
