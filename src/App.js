@@ -24,11 +24,11 @@ function App() {
     .then((data) => setMovies(data))
   }, [])
 /* ----------------------------- Setting favorites page ----------------------------- */
-  useEffect(() => {
-    fetch('http://localhost:9292/favorites')
-    .then(res => res.json())
-    .then((data) => setFavorites(data))
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/favorites')
+  //   .then(res => res.json())
+  //   .then((data) => setFavorites(data))
+  // }, [])
   
   function handleAddFavorite(newItem) {
     setFavorites([...favorites, newItem]);

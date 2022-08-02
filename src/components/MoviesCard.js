@@ -14,7 +14,7 @@ import { FlipToBack, FlipToFront } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import Reviews from "./Reviews";
 
-function MoviesCard({movie}) {
+function MoviesCard({ movie, handleAddFavorite }) {
   // const [value, setValue] = React.useState(0);
   const [showBack, setShowBack] = React.useState(false)
 
@@ -22,12 +22,12 @@ function MoviesCard({movie}) {
     setShowBack(!showBack);
   }
 
-  const newUsers = movie.users.map(user => {
-    const container = {}
+  // const newUsers = movie.users.map(user => {
+  //   const container = {}
 
-    container[user.id] = user
-    return container
-  })
+  //   container[user.id] = user
+  //   return container
+  // })
 
   console.log(movie.users)
 
@@ -39,7 +39,7 @@ function MoviesCard({movie}) {
 
 
 
-function MoviesCard({ movie, handleAddFavorite }) {
+
   const [value, setValue] = React.useState(0);
   const [fav, setFav] = React.useState(false);
 
@@ -182,4 +182,5 @@ function MoviesCard({ movie, handleAddFavorite }) {
   );
 }
 
-export default MoviesCard;
+
+export default MoviesCard
