@@ -11,7 +11,7 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
 
-function Reviews(review) {
+function Reviews({review, setOperand}) {
 
     const [showEdit, setShowEdit] = useState(false)
     const [editRating, setEditRating] = useState('')
@@ -20,22 +20,24 @@ function Reviews(review) {
     const editObj = {
         rating: editRating,
         comment: editComment,
-        movie_id: review.review.movie_id
+        movie_id: review.movie_id
     }
 
     function handleShowEdit() {
         setShowEdit(!showEdit)
     }
 
-    function handleDelete() {
-        fetch(`http://localhost:9292/reviews/${review.review.id}`, {
+    function handleDelete(review) {
+        fetch(`http://localhost:9292/reviews/${review.id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json"
             }
         })
         .then(r => r.json())
+        .then(review => setOperand(review))
     }
+
 
     function handleEditRating(e) {
         setEditRating(e.target.value)
@@ -45,8 +47,9 @@ function Reviews(review) {
         setEditComment(e.target.value)
     }
 
-    function handleEdit() {
-        fetch(`http://localhost:9292/reviews/${review.review.id}`, {
+    function handleEdit(review) {
+        console.log(editObj)
+        fetch(`http://localhost:9292/reviews/${review.id}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json"
@@ -54,7 +57,8 @@ function Reviews(review) {
             body: JSON.stringify(editObj)
         })
         .then(r => r.json())
-        // console.log(review.review.id)
+        .then(setOperand(review))
+        // console.log(review.id)
     }
   
 
@@ -62,11 +66,11 @@ function Reviews(review) {
     <Card sx={{ minWidth: 300 }}>
       <CardContent>
         <Typography variant="h5" component="div">
-        {review.review.comment}
+        {review.comment}
         </Typography>
         <Box display={"flex"}>
             <Rating 
-                value={review.review.rating}
+                value={review.rating}
                 readOnly
                 max={10}
             />
@@ -81,7 +85,7 @@ function Reviews(review) {
         <Button 
             variant="contained"
             sx={{ mx: "auto" }}
-            onClick={handleDelete}
+            onClick={() => handleDelete(review)}
             size="small"
         >
             Delete Review
@@ -129,7 +133,7 @@ function Reviews(review) {
                 <Button 
                     variant="contained"
                     sx={{ mx: "auto", my: "auto"}}
-                    onClick={handleEdit}
+                    onClick={() => handleEdit(review)}
                     type="submit"
                     size="small"
                 >
