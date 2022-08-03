@@ -70,7 +70,6 @@ function App() {
             <Container maxWidth={"false"}>
               <MoviesCardContainer 
                 className='MoviesContainer'
-
                 movies={displayedMovies}
                 handleAddFavorite={handleAddFavorite}
                />
