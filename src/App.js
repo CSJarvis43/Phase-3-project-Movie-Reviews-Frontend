@@ -16,13 +16,15 @@ function App() {
   const [movies, setMovies] = useState([])
   const [searchState, setSearchState] = useState('')
   const [favorites, setFavorites] = useState([])
+  const [operand, setOperand] = useState(null)
 
 /* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
     fetch('http://localhost:9292/reviews')
     .then((response) => response.json())
     .then((data) => setMovies(data))
-  }, [])
+  }, [operand])
+  console.log(operand)
 /* ----------------------------- Setting favorites page ----------------------------- */
   // useEffect(() => {
   //   fetch('http://localhost:9292/favorites')
@@ -72,6 +74,7 @@ function App() {
                 className='MoviesContainer'
                 movies={displayedMovies}
                 handleAddFavorite={handleAddFavorite}
+                setOperand={setOperand}
                />
 
             </Container>
