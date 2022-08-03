@@ -81,9 +81,9 @@ function MoviesCard({ movie, handleAddFavorite }) {
         body: JSON.stringify(movie),
       })
         .then((res) => res.json())
-        .then((newItem) => handleAddFavorite(newItem));
+        .then((data) => handleAddFavorite(data));
     } else {
-      //Or delete from /favorites (or do nothing)
+      
     }
   }
     
@@ -156,6 +156,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
             readOnly
             precision={0.1}
           />
+          <p align="right">
           {!fav && (
             <IconButton
               onClick={handleFav}
@@ -176,6 +177,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
               <Favorite></Favorite>
             </IconButton>
           )}
+          </p>
         </Box>
       </Card>
     </Grid>
