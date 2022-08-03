@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 function MoviesCardContainer({movies, handleAddFavorite, setOperand}) {
 
-  console.log(movies)
+  // console.log(movies)
 
   const renderMovies = movies.map((movie) => {
     return (

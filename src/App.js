@@ -24,7 +24,7 @@ function App() {
     .then((response) => response.json())
     .then((data) => setMovies(data))
   }, [operand])
-  console.log(operand)
+  // console.log(operand)
 /* ----------------------------- Setting favorites page ----------------------------- */
   // useEffect(() => {
   //   fetch('http://localhost:9292/favorites')
@@ -75,7 +75,7 @@ function App() {
                 movies={displayedMovies}
                 handleAddFavorite={handleAddFavorite}
                 setOperand={setOperand}
-               />
+              />
 
             </Container>
           }
@@ -85,7 +85,10 @@ function App() {
           path="/top-ten"
           element={
             <Container maxWidth={"false"}>
-              <TopTen />
+              <TopTen 
+                handleAddFavorite={handleAddFavorite}
+                setOperand={setOperand}
+              />
             </Container>
           }
         />

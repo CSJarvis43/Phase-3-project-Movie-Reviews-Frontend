@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MoviesCardContainer from './MoviesContainer'
 
 
-function TopTen({handleAddFavorite}) {
+function TopTen({handleAddFavorite, setOperand}) {
 const [topMovies, setTopMovies] = useState([])
 
 
@@ -20,6 +20,7 @@ useEffect(() => {
     <MoviesCardContainer
         handleAddFavorite={handleAddFavorite}
         movies={topMovies}
+        setOperand={setOperand}
     >
 
     </MoviesCardContainer>
