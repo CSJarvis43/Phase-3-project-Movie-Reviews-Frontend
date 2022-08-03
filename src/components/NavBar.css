@@ -1,3 +1,13 @@
 .navBar .navBarCont .toolbar #logoImg {
-    max-width: 55px;
+    max-width: 110px;
+  
+}
+
+.navBar {
+grid-column: 1 /span 3;
+  grid-row: 1;
+  background-color: #efc1a9;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }

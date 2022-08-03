@@ -27,6 +27,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
     setShowBack(!showBack);
   }
 
+
   // const newUsers = movie.users.map(user => {
   //   const container = {}
 
@@ -58,6 +59,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
     production_company,
     release_year,
     runtime,
+    reviews
   } = movie;
 
   function handleFav() {
@@ -73,6 +75,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
         production_company,
         release_year,
         runtime,
+        reviews
       };
       console.log(movie)
       fetch("http://localhost:9292/favorites", {
@@ -85,9 +88,20 @@ function MoviesCard({ movie, handleAddFavorite }) {
       })
         .then((res) => res.json())
         .then((data) => handleAddFavorite(data));
-    } else {
+
+      fetch("http://localhost:9292/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(movie.reviews),
+      })
+        .then((res) => res.json())
+        .then((data) => handleAddFavorite(data));
       
-    }
+        
+    } console.log(movie.reviews)
   }
     
   
@@ -160,7 +174,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
             readOnly
             precision={0.25}
           />
-          <p align="right">
+         <center>
           {!fav && (
             <IconButton
               onClick={handleFav}
@@ -169,7 +183,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
               className="likeButton"
               sx={{ mx: "auto" }}
             >
-              <FavoriteBorderIcon></FavoriteBorderIcon>
+              <FavoriteBorderIcon>:</FavoriteBorderIcon>
             </IconButton>
           )}
           {fav && (
@@ -183,7 +197,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
               <Favorite></Favorite>
             </IconButton>
           )}
-          </p>
+          </center>
         </Box>
         <ReviewForm movie={movie}/>
       </Card>

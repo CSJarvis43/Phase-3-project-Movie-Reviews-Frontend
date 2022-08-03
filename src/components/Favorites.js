@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import MoviesCard from "./MoviesCard"
+import MoviesCardContainer from './MoviesContainer'
 
-function Favorites() {
+function Favorites({ movies, handleAddFavorite }) {
+
+
+console.log(movies)
+
   return (
-    <div>Favorites</div>
+    <div><MoviesCardContainer 
+    className='MoviesContainer'
+    movies={movies}
+    handleAddFavorite={handleAddFavorite}
+   /></div>
   )
 }
 
 export default Favorites;
+

@@ -16,6 +16,9 @@ function App() {
   const [movies, setMovies] = useState([])
   const [searchState, setSearchState] = useState('')
   const [favorites, setFavorites] = useState([])
+  const [favoritesTab, setFavoritesTab] = useState([])
+
+  
 
 /* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
@@ -40,17 +43,20 @@ function App() {
     setSearchState(e.target.value)
   }
 
-
-  // console.log(movies)
-
-  // useEffect(() => {
-  //   fetch('http://localhost:9292/reviews')
-  //   .then(res => res.json())
-  //   .then(setRevByMovie)
-  // },[])
-
   const displayedMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().includes(searchState.toLowerCase());
+  });
+
+  /* ----------------------------- Favorites Tab ----------------------------- */
+
+  useEffect(() => {
+    fetch('http://localhost:9292/favorites')
+    .then((response) => response.json())
+    .then((data) => setFavoritesTab(data))
+  }, [])
+
+  const displayedFavorites = favoritesTab.filter((fave) => {
+    return fave.title.toLowerCase().includes(searchState.toLowerCase());
   });
 
   /* ----------------------------- Return App.js ----------------------------- */
@@ -90,7 +96,8 @@ function App() {
           path="/favorites"
           element={
             <Container maxWidth={"false"}>
-              <Favorites />
+              <Favorites 
+              movies={displayedFavorites}/>
             </Container>
           }
         />
