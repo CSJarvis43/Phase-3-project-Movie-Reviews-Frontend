@@ -1,7 +1,3 @@
-
-
-
-
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Navbar from './components/NavBar';
@@ -16,16 +12,15 @@ function App() {
   const [movies, setMovies] = useState([])
   const [searchState, setSearchState] = useState('')
   const [favorites, setFavorites] = useState([])
-  const [favoritesTab, setFavoritesTab] = useState([])
-
-  
+  const [operand, setOperand] = useState(null)
 
 /* ----------------------------- Grabbing initial data from back end ----------------------------- */
   useEffect(() => {
     fetch('http://localhost:9292/reviews')
     .then((response) => response.json())
     .then((data) => setMovies(data))
-  }, [])
+  }, [operand])
+  console.log(operand)
 /* ----------------------------- Setting favorites page ----------------------------- */
   // useEffect(() => {
   //   fetch('http://localhost:9292/favorites')
@@ -43,20 +38,17 @@ function App() {
     setSearchState(e.target.value)
   }
 
+
+  // console.log(movies)
+
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/reviews')
+  //   .then(res => res.json())
+  //   .then(setRevByMovie)
+  // },[])
+
   const displayedMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().includes(searchState.toLowerCase());
-  });
-
-  /* ----------------------------- Favorites Tab ----------------------------- */
-
-  useEffect(() => {
-    fetch('http://localhost:9292/favorites')
-    .then((response) => response.json())
-    .then((data) => setFavoritesTab(data))
-  }, [])
-
-  const displayedFavorites = favoritesTab.filter((fave) => {
-    return fave.title.toLowerCase().includes(searchState.toLowerCase());
   });
 
   /* ----------------------------- Return App.js ----------------------------- */
@@ -78,6 +70,7 @@ function App() {
                 className='MoviesContainer'
                 movies={displayedMovies}
                 handleAddFavorite={handleAddFavorite}
+                setOperand={setOperand}
                />
 
             </Container>
@@ -96,8 +89,7 @@ function App() {
           path="/favorites"
           element={
             <Container maxWidth={"false"}>
-              <Favorites 
-              movies={displayedFavorites}/>
+              <Favorites />
             </Container>
           }
         />
@@ -106,5 +98,4 @@ function App() {
 
   );
 }
-
 export default App;

@@ -17,7 +17,7 @@ import CardActions from "@mui/material/CardActions";
 import ReviewForm from "./ReviewForm";
 
 
-function MoviesCard({ movie, handleAddFavorite }) {
+function MoviesCard({ movie, handleAddFavorite, setOperand }) {
   // const [value, setValue] = React.useState(0);
   const [showBack, setShowBack] = React.useState(false)
   const [value, setValue] = React.useState(0);
@@ -130,6 +130,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
                 <Reviews 
                   review={review}
                   key={review.id}
+                  setOperand={setOperand}
                 />
               )
             })}
@@ -199,7 +200,7 @@ function MoviesCard({ movie, handleAddFavorite }) {
           )}
           </center>
         </Box>
-        <ReviewForm movie={movie}/>
+        <ReviewForm movie={movie} setOperand={setOperand}/>
       </Card>
     </Grid>
   );
