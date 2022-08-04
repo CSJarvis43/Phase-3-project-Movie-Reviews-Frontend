@@ -7,6 +7,7 @@ import { Container } from '@mui/material';
 import TopTen from './components/TopTen';
 import Favorites from './components/Favorites';
 import SearchBar from './components/SearchBar';
+import Users from './components/Users';
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -93,6 +94,16 @@ function App() {
           element={
             <Container maxWidth={"false"}>
               <Favorites />
+            </Container>
+          }
+        />
+        <Route 
+          path="/users"
+          element={
+            <Container maxWidth={"false"}>
+              <Users 
+                
+              />
             </Container>
           }
         />

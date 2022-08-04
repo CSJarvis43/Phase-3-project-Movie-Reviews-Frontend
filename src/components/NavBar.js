@@ -21,6 +21,9 @@ const linkBehaviorTop = React.forwardRef((props, ref) => (
   <RouterLink ref={ref} to="/top-ten" {...props} role={undefined} />
 ));
 
+const linkBehaviorUsers = React.forwardRef((props, ref) => (
+  <RouterLink ref={ref} to="/users" {...props} role={undefined} />
+));
 
 
 function NavBar({handleSearchChange, searchState}) {
@@ -52,6 +55,12 @@ function NavBar({handleSearchChange, searchState}) {
                 component={linkBehaviorTop}
               >
                   Top Movies
+              </Button>
+              <Button
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
+                component={linkBehaviorUsers}
+              >
+                  User Reviews
               </Button>
               <SearchBar 
                 searchState={searchState}
