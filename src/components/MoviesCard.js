@@ -27,6 +27,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
     setShowBack(!showBack);
   }
 
+
   // const newUsers = movie.users.map(user => {
   //   const container = {}
 
@@ -38,7 +39,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
 
 
   // const newReviews = movie.reviews.filter(review => review.user_id === movie.users.user.i)
-
+console.log(movie)
   const average = movie.reviews.reduce((total, next) => total + next.rating, 0) / movie.reviews.length
 
 
@@ -58,6 +59,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
     production_company,
     release_year,
     runtime,
+    reviews
   } = movie;
 
   function handleFav() {
@@ -73,6 +75,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
         production_company,
         release_year,
         runtime,
+        reviews
       };
       console.log(movie)
       fetch("http://localhost:9292/favorites", {
@@ -85,9 +88,21 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
       })
         .then((res) => res.json())
         .then((data) => handleAddFavorite(data));
-    } else {
+
+        
+      fetch("http://localhost:9292/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(movie.reviews[0]),
+      })
+        .then((res) => res.json())
+        .then((data) => handleAddFavorite(data));
       
-    }
+        
+    } console.log(movie.reviews[0])
   }
     
   
@@ -161,7 +176,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
             readOnly
             precision={0.25}
           />
-          <p align="right">
+         <center>
           {!fav && (
             <IconButton
               onClick={handleFav}
@@ -170,7 +185,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
               className="likeButton"
               sx={{ mx: "auto" }}
             >
-              <FavoriteBorderIcon></FavoriteBorderIcon>
+              <FavoriteBorderIcon>:</FavoriteBorderIcon>
             </IconButton>
           )}
           {fav && (
@@ -184,7 +199,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
               <Favorite></Favorite>
             </IconButton>
           )}
-          </p>
+          </center>
         </Box>
         <ReviewForm movie={movie} setOperand={setOperand}/>
       </Card>
