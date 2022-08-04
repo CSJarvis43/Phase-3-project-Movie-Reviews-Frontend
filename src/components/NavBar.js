@@ -30,7 +30,7 @@ function NavBar({handleSearchChange, searchState}) {
 
 
   return (
-    <AppBar position="static" className='navBar'>
+    <AppBar position="sticky" className='navBar'>
       <Container maxWidth="100vw" className='navBarCont'>
         <Toolbar disableGutters className='toolbar'>
           <img src="https://i.imgur.com/EUQSnw7.png" alt="logo" id="logoImg"/>
