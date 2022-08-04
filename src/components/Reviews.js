@@ -63,7 +63,7 @@ function Reviews({review, setOperand}) {
   
 
   return (
-    <Card sx={{ minWidth: 300 }}>
+    <Card sx={{ minWidth: 300, m: 1 }} style={{backgroundColor: "#8E8D8A"}}>
       <CardContent>
         <Typography variant="h5" component="div">
         {review.comment}

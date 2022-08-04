@@ -87,7 +87,7 @@ function ReviewForm({movie, setOperand}) {
                 </FormControl>
                 <TextField 
                     label="Comment" 
-                    sx={{ mx: "auto", my: "auto", minWidth: 300}} 
+                    sx={{ mx: "auto", my: "auto", minWidth: 200}} 
                     value={comment}
                     onChange={handleComment}
                 />

@@ -40,8 +40,9 @@ function UserCard({user}) {
             <Card >
                 <Box 
                     display={"flex"}
+                    style={{backgroundColor: "#D8C3A5"}}
                 >
-                    <CardContent>
+                    <CardContent style={{backgroundColor: "#D8C3A5"}}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         User:
                         </Typography>
@@ -59,7 +60,9 @@ function UserCard({user}) {
                         </Typography>
                     </CardContent>
                 </Box>
-                <CardActions>
+                <CardActions
+                    style={{backgroundColor: "#D8C3A5"}}
+                >
                 <Button 
                         size="small"
                         onClick={handleUserReviews}

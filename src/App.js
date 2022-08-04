@@ -8,6 +8,8 @@ import TopTen from './components/TopTen';
 import Favorites from './components/Favorites';
 import SearchBar from './components/SearchBar';
 import Users from './components/Users';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from "./components/AppTheme.js"
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -56,59 +58,61 @@ function App() {
 
 
   return (
-    <Router>
-      <Navbar 
-        searchState={searchState}
-        handleSearchChange={handleSearchChange} 
-      />
-
-      <Routes>
-        <Route 
-          path="/"
-          element={
-            <Container maxWidth={"false"}>
-              <MoviesCardContainer 
-                className='MoviesContainer'
-                movies={displayedMovies}
-                handleAddFavorite={handleAddFavorite}
-                setOperand={setOperand}
-              />
-
-            </Container>
-          }
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Navbar 
+          searchState={searchState}
+          handleSearchChange={handleSearchChange} 
         />
 
-        <Route 
-          path="/top-ten"
-          element={
-            <Container maxWidth={"false"}>
-              <TopTen 
-                handleAddFavorite={handleAddFavorite}
-                setOperand={setOperand}
-              />
-            </Container>
-          }
-        />
-        <Route 
-          path="/favorites"
-          element={
-            <Container maxWidth={"false"}>
-              <Favorites />
-            </Container>
-          }
-        />
-        <Route 
-          path="/users"
-          element={
-            <Container maxWidth={"false"}>
-              <Users 
-                
-              />
-            </Container>
-          }
-        />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route 
+            path="/"
+            element={
+              <Container maxWidth={"false"}>
+                <MoviesCardContainer 
+                  className='MoviesContainer'
+                  movies={displayedMovies}
+                  handleAddFavorite={handleAddFavorite}
+                  setOperand={setOperand}
+                />
+
+              </Container>
+            }
+          />
+
+          <Route 
+            path="/top-ten"
+            element={
+              <Container maxWidth={"false"}>
+                <TopTen 
+                  handleAddFavorite={handleAddFavorite}
+                  setOperand={setOperand}
+                />
+              </Container>
+            }
+          />
+          <Route 
+            path="/favorites"
+            element={
+              <Container maxWidth={"false"}>
+                <Favorites />
+              </Container>
+            }
+          />
+          <Route 
+            path="/users"
+            element={
+              <Container maxWidth={"false"}>
+                <Users 
+                  
+                />
+              </Container>
+            }
+          />
+        </Routes>
+      </Router>
+    </ThemeProvider>
 
   );
 }

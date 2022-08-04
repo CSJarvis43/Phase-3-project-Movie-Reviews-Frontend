@@ -39,7 +39,7 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
 
 
   // const newReviews = movie.reviews.filter(review => review.user_id === movie.users.user.i)
-console.log(movie)
+// console.log(movie)
   const average = movie.reviews.reduce((total, next) => total + next.rating, 0) / movie.reviews.length
 
 
@@ -87,7 +87,7 @@ console.log(movie)
         body: JSON.stringify(movie),
       })
         .then((res) => res.json())
-        .then((data) => handleAddFavorite(data));
+        // .then((data) => handleAddFavorite(data));
 
         
       fetch("http://localhost:9292/favorites", {
@@ -99,7 +99,7 @@ console.log(movie)
         body: JSON.stringify(movie.reviews[0]),
       })
         .then((res) => res.json())
-        .then((data) => handleAddFavorite(data));
+        // .then((data) => handleAddFavorite(data));
       
         
     } console.log(movie.reviews[0])
@@ -115,8 +115,10 @@ console.log(movie)
             {!showBack ? <FlipToBack /> : <FlipToFront />}
           </IconButton>
         }
+        style={{backgroundColor: "#EAE7DC"}}
+        title={"Click to See Reviews"}
         />
-      <Card className="MoviesCard" elevation={20}>
+      <Card className="MoviesCard" elevation={20} style={{backgroundColor: "#D8C3A5"}}>
         {!showBack ? (
           <CardMedia 
             component="img"
@@ -152,15 +154,9 @@ console.log(movie)
 
           >
           </Box>
-          <ReactReadMoreReadLess
-              charLimit={75}
-              readMoreText={"Read more"}
-              readLessText={"Read less"}
-              readMoreClassName="read-more-less--more"
-              readLessClassName="read-more-less--less"
-          >
+          <Typography>
             {movie.description}
-          </ReactReadMoreReadLess>
+          </Typography>
 
         </Box>{" "}
         <Box paddingX={1} display="flex">
@@ -184,7 +180,7 @@ console.log(movie)
               color="primary"
               className="likeButton"
               sx={{ mx: "auto" }}
-            >
+            >Favorite:
               <FavoriteBorderIcon>:</FavoriteBorderIcon>
             </IconButton>
           )}
@@ -195,7 +191,7 @@ console.log(movie)
               color="primary"
               className="likeButton"
               sx={{ mx: "auto" }}
-            >
+            >Favorited!
               <Favorite></Favorite>
             </IconButton>
           )}
