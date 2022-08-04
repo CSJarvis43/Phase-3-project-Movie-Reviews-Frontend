@@ -90,19 +90,19 @@ function MoviesCard({ movie, handleAddFavorite, setOperand }) {
         // .then((data) => handleAddFavorite(data));
 
         
-      fetch("http://localhost:9292/favorites", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(movie.reviews[0]),
-      })
-        .then((res) => res.json())
-        // .then((data) => handleAddFavorite(data));
+      // fetch("http://localhost:9292/favorites", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //   },
+      //   body: JSON.stringify(movie.reviews[0]),
+      // })
+      //   .then((res) => res.json())
+      //   // .then((data) => handleAddFavorite(data));
       
         
-    } console.log(movie.reviews[0])
+    }
   }
     
   
