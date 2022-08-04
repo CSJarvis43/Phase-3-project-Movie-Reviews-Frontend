@@ -1,18 +1,22 @@
-import React, {useEffect} from 'react'
-import MoviesCard from "./MoviesCard"
+import React, {useEffect, useState} from 'react'
+
 import MoviesCardContainer from './MoviesContainer'
 
-function Favorites({ movies, handleAddFavorite }) {
+function Favorites({ handleAddFavorite }) {
+  const [favMovies, setfavMovies] = useState([])
 
-
-console.log(movies)
+useEffect(() => {
+  fetch('http://localhost:9292/favorites')
+  .then((response) => response.json())
+  .then((data) => setfavMovies(data))
+}, [])
+console.log(favMovies)
 
   return (
-    <div><MoviesCardContainer 
-    className='MoviesContainer'
-    movies={movies}
+    <MoviesCardContainer 
+    movies={favMovies}
     handleAddFavorite={handleAddFavorite}
-   /></div>
+   />
   )
 }
 
