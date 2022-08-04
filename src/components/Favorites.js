@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 
 import MoviesCardContainer from './MoviesContainer'
 
-function Favorites({ handleAddFavorite }) {
+function Favorites({  }) {
   const [favMovies, setfavMovies] = useState([])
 
 useEffect(() => {
@@ -15,7 +15,6 @@ console.log(favMovies)
   return (
     <MoviesCardContainer 
     movies={favMovies}
-    handleAddFavorite={handleAddFavorite}
    />
   )
 }

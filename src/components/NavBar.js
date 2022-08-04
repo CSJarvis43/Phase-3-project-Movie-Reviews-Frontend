@@ -31,33 +31,33 @@ function NavBar({handleSearchChange, searchState}) {
 
   return (
     <AppBar position="static" className='navBar'>
-      <Container maxWidth="xl" className='navBarCont'>
+      <Container maxWidth="100vw" className='navBarCont'>
         <Toolbar disableGutters className='toolbar'>
-          <img src="https://i.imgur.com/mY6lXmi.png" alt="logo" id="logoImg"/>
-          <Typography variant="h6" sx={{mx: 1}}>
+          <img src="https://i.imgur.com/EUQSnw7.png" alt="logo" id="logoImg"/>
+          <Typography variant="h5" sx={{mx: 1}} fontSize={48}>
             MOVIE REPORT
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
-                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block', fontSize: 24 }}
                 component={linkBehaviorHome}
               >
                 Home
               </Button>
               <Button
-                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block', fontSize: 24}}
                 component={linkBehaviorFav}
               >
                   Favorites
               </Button>
               <Button
-                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block', fontSize: 24 }}
                 component={linkBehaviorTop}
               >
                   Top Movies
               </Button>
               <Button
-                sx={{ my: 1, mx: "auto", color: 'white', display: 'block' }}
+                sx={{ my: 1, mx: "auto", color: 'white', display: 'block', fontSize: 24 }}
                 component={linkBehaviorUsers}
               >
                   User Reviews

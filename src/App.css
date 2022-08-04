@@ -4,11 +4,39 @@ html, body {
   height:100%;
 }
 
+/* body {
+  background: 
+  linear-gradient(135deg, #8E8D8A 25%, transparent 25%) -50px 0,
+  linear-gradient(225deg, #8E8D8A 25%, transparent 25%) -50px 0,
+  linear-gradient(315deg, #8E8D8A 25%, transparent 25%),
+  linear-gradient(45deg, #8E8D8A 25%, transparent 25%);
+  background-size: 2em 2em;
+  background-color: #E85A4F;
+} */
+
+html, body {
+  width: 100%;
+  height:100%;
+}
+
 body {
-    background: linear-gradient(-45deg, #ee6c52, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(90deg, #EAE7DC, #D8CEA5, #E98074, #E85A4F);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    } 
+}
+
 
 @keyframes gradient {
     0% {
@@ -81,4 +109,24 @@ body {
     align-items: right;
     justify-content: right;
     align-self: right;
+  }
+
+  .MoviesCard {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
+
+  }
+
+  .read-more-less--more {
+    font-family: "philosopher";
+  }
+
+  .read-more-less--less {
+    font-family: "philosopher";
+  }
+
+  .read-more_less {
+    font-family: "philosopher";
   }
