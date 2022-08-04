@@ -1,5 +1,7 @@
 .navBar .navBarCont .toolbar #logoImg {
     max-width: 110px;
+  position: sticky;
+  top: 0;
   
 }
 
